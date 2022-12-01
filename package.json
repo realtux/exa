@@ -1,0 +1,22 @@
+{
+    "name": "exa",
+    "type": "module",
+    "author": "Brian Seymour <@realtux>",
+    "version": "0.0.1",
+    "description": "modern pure mvc node.js framework based on express",
+    "license": "MIT",
+    "homepage": "https://github.com/realtux/exa",
+    "main": "./lib/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/realtux/exa"
+    },
+    "dependencies": {
+        "express": "4.18.2",
+        "luxon": "3.1.1",
+        "nocamel": "1.0.2",
+        "nodemon": "2.0.4",
+        "sequelize": "6.19.0",
+        "twig": "1.15.4"
+    }
+}
