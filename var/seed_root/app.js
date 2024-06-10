@@ -1,4 +1,3 @@
-//import exa from 'exa'; // prod
-import exa from '../../lib/index.js';
+import exa from '@exajs/core';
 
-exa.start();
+exa.start(import.meta.url);

@@ -1,6 +1,15 @@
 {
     "type": "module",
+    "imports": {
+        "#app/*.js": "./*.js"
+    },
     "dependencies": {
-        "exa": "0.0.1"
+        "@exajs/core": "../..",
+        "nodemon": "2.0.4"
+    },
+    "scripts": {
+        "dev": "nodemon -q --watch ../.. --ignore node_modules/ -e '*' -x 'node app.js || touch app.js'",
+        "prod": "node app.js",
+        "console": "node app.js console $*"
     }
 }

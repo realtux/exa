@@ -1,7 +1,9 @@
-export default {
+import { DateTime } from 'luxon';
+
+export default new class {
 
     now() {
-        console.log(+new Date());
+        return DateTime.now();
     }
 
 };

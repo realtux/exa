@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "#exa/*": [
+                "lib/*"
+            ],
+            "#app/*": [
+                "var/seed_root/*"
+            ]
+        },
+        "moduleResolution": "nodenext"
+    }
+}

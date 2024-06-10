@@ -1,22 +1,38 @@
 {
-    "name": "exa",
+    "name": "@exajs/core",
     "type": "module",
     "author": "Brian Seymour <@realtux>",
     "version": "0.0.1",
-    "description": "modern pure mvc node.js framework based on express",
+    "description": "modern opinionated node.js framework",
     "license": "MIT",
     "homepage": "https://github.com/realtux/exa",
-    "main": "./lib/index.js",
+    "main": "lib/index.js",
     "repository": {
         "type": "git",
-        "url": "git://github.com/realtux/exa"
+        "url": "git://github.com/realtux/exa.git"
+    },
+    "imports": {
+        "#exa/*.js": "./lib/*.js"
+    },
+    "exports": {
+        ".": "./lib/index.js",
+        "./database/connection": "./lib/database/connection.js",
+        "./system": "./lib/system/index.js",
+        "./system/sequelize": "./lib/system/sequelize.js"
     },
     "dependencies": {
+        "chalk": "5.2.0",
+        "cors": "2.8.5",
+        "dotenv": "16.4.5",
         "express": "4.18.2",
+        "glob": "10.4.1",
         "luxon": "3.1.1",
-        "nocamel": "1.0.2",
-        "nodemon": "2.0.4",
-        "sequelize": "6.19.0",
-        "twig": "1.15.4"
+        "multer": "1.4.5-lts.1",
+        "mysql2": "3.10.0",
+        "nunjucks": "^3.2.4",
+        "sequelize": "6.19.0"
+    },
+    "devDependencies": {
+        "nodemon": "2.0.20"
     }
 }
