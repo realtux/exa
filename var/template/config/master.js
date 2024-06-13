@@ -18,6 +18,7 @@ export default {
 
     /**
      * database module configuration
+     *   - uses sequelize.js
      *   - creates database connection
      *   - initializes models in models/*
      */
@@ -40,12 +41,22 @@ export default {
 
     /**
      * views module configuration
-     *   - supports nunjucks
+     *   - available engines:
+     *     - nunjucks
      */
     views: {
         use: true,
-        engine: 'nunjucks'
-    }
+        engine: 'nunjucks',
+    },
+
+    /**
+     * public static asset configuration
+     *   - uses express.static(path)
+     */
+    public: {
+        use: true,
+        base_url: '/public',
+    },
 
     /**
      * user defined custom configuration
