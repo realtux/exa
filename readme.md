@@ -1,5 +1,8 @@
 ## exa.js by [tux](https://github.com/realtux)
-exa.js is a minimal node.js backend framework that has a strong focus on simplicity, modularity, and convention over configuration.
+exa.js is a minimal node.js backend framework that has a strong focus on simplicity, modularity, and convention over configuration. 
+
+#### motivation
+as if the javascript ecosystem needs another framework... i get it, but please know that this project is the culmination of ~10 years of professional development trying to understand what i/people really need in a framework. this project is the consolidated and cleaned up version of about 30 projects worth of boilerplate patchwork that has been unevenly iterated on and used in some form during this time. i'm certain you'll find use for it, and i certainly will.
 
 ---
 
@@ -8,8 +11,11 @@ exa.js is a minimal node.js backend framework that has a strong focus on simplic
 # initialize
 npx @exajs/core init
 
-# start
+# start dev with auto reload
 npm run watch
+
+# start normal
+npm start
 ```
 this will create the exa.js template project structure in the current directory. a brief description of this template is below.
 
