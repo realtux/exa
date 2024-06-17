@@ -8,16 +8,19 @@ as if the javascript ecosystem needs another framework... i get it, but please k
 
 ### quickstart
 ```bash
+# create a new directory for your project
+mkdir myproject; cd myproject
+
 # initialize
 npx @exajs/core init
 
 # start dev with auto reload
 npm run watch
 
-# start normal
+# start production
 npm start
 ```
-this will create the exa.js template project structure in the current directory. a brief description of this template is below.
+initializing will create the exa.js template project structure in the current directory. a brief description of this template is below.
 
 ---
 
