@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+    app:
+        container_name: exa_app
+        image: node:20
+        tty: true
+        ports:
+            - "8118:8118"
+        volumes:
+            - .:/opt/src
+        working_dir: /opt/src
+        command: npm start
+        env_file:
+            - .env
+    console:
+        container_name: exa_console
+        image: node:20
+        tty: true
+        init: true
+        volumes:
+            - .:/opt/src
+        working_dir: /opt/src/console
+        env_file:
+            - .env
+        profiles:
+            - nostart
