@@ -24,6 +24,7 @@ export default {
      */
     database: {
         use: true,
+        dialect: 'mysql',
         username: 'admin',
         password: 'password',
         name: 'database',

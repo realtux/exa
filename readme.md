@@ -43,8 +43,11 @@ initializing will create the exa.js template project structure in the current di
 - **models**  
 *contains sequelize.js compatible database model files. to use a different database orm, set `database.use = false` in `config/master.js` which will disable automatic initialization of the `models` folder. see docs for proper format.*
 
-- **public**
+- **public**  
 *contains publicly available static files. in development, this is served with `express.static()` at base url `/public`. in production, this should be served with a normal web server.*
+
+- **var**  
+*contains variable static data, use this to store files that aren't directly used in your project, such as docs, sql files, notes, etc.*
 
 - **views**  
 *contains view templates for traditional non-async frontends. use `res.render(path, variables)` instead of `res.send()` in your api logic.*

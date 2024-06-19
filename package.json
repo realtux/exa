@@ -2,7 +2,7 @@
     "name": "@exajs/core",
     "type": "module",
     "author": "Brian Seymour <@realtux>",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "modern opinionated node.js framework",
     "license": "MIT",
     "homepage": "https://github.com/realtux/exa",
