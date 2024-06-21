@@ -1,7 +1,7 @@
 ## exa.js by [tux](https://github.com/realtux)
 exa.js is a minimal node.js backend framework that has a strong focus on simplicity, modularity, and convention over configuration. 
 
-#### motivation
+### motivation
 as if the javascript ecosystem needs another framework... i get it, but please know that this project is the culmination of ~10 years of professional development trying to understand what i/people really need in a framework. this project is the consolidated and cleaned up version of about 30 projects worth of boilerplate patchwork that has been unevenly iterated on and used in some form during this time. i'm certain you'll find use for it, and i certainly will.
 
 ---
@@ -39,6 +39,9 @@ initializing will create the exa.js template project structure in the current di
 
 - **middleware**  
 *contains express.js compatible middleware. middleware is configured for use in api logic. see docs for proper format.*
+
+- **migrations**  
+*contains [jmig](https://github.com/realtux/jmig) compatible database migrations files. these are used to apply and rollback changes to a database. please see the jmig readme for usage specifics.*
 
 - **models**  
 *contains sequelize.js compatible database model files. to use a different database orm, set `database.use = false` in `config/master.js` which will disable automatic initialization of the `models` folder. see docs for proper format.*
