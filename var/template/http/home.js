@@ -4,7 +4,7 @@ export default new class {
         'get /home': 'home',
     }
 
-    home(req, res) {
+    async home(req, res) {
         return res
             .status(200)
             .render('sample.html', {

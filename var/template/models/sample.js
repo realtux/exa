@@ -21,6 +21,10 @@ class sample extends Model {
         }
     }
 
+    static model_method() {
+        console.log('calling sample.model_method()');
+    }
+
 }
 
 export default sample;

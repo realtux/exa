@@ -4,8 +4,7 @@
 . .env
 
 # switch to current directory
-scriptdir=$(dirname "$0")
-cd $scriptdir
+cd $(dirname "$0")
 
 case $* in
     console* )

@@ -61,7 +61,7 @@ export default {
 
     /**
      * user defined custom configuration
-     * add anything you'd like
+     * add anything you'd like to be avaiable at exa.config.*
      */
 
 };
