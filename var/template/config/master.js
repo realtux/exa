@@ -11,8 +11,11 @@ export default {
      *   - creates http routes from http/*
      */
     http: {
+        // whether or not to start an express http server
         use: true,
+        // host to run on, 0.0.0.0 for all hosts
         host: '0.0.0.0',
+        // port to run on
         port: 8118,
     },
 
@@ -20,10 +23,11 @@ export default {
      * database module configuration
      *   - uses sequelize.js
      *   - creates database connection
-     *   - initializes models in models/*
      */
     database: {
+        // whether or not to initialize db models in models/*
         use: true,
+        // sequelize dialect to use, supports: mysql | postgres
         dialect: 'mysql',
         username: 'admin',
         password: 'password',
@@ -37,16 +41,19 @@ export default {
      *   - allows console commands ran from console/*
      */
     console: {
+        // whether or not to allow console commands
         use: true,
+        // whether or not to show startup information
+        quiet: false,
     },
 
     /**
      * views module configuration
-     *   - available engines:
-     *     - nunjucks
      */
     views: {
+        // whether or not to enable views
         use: true,
+        // which view engine to use, supports: nunjucks
         engine: 'nunjucks',
     },
 
@@ -55,7 +62,9 @@ export default {
      *   - uses express.static(path)
      */
     public: {
+        // whether or not to serve static assets
         use: true,
+        // base url to serve static assets on
         base_url: '/public',
     },
 
