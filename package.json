@@ -2,11 +2,12 @@
     "name": "@exajs/core",
     "type": "module",
     "author": "Brian Seymour <@realtux>",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "description": "modern opinionated node.js framework",
     "license": "MIT",
     "homepage": "https://github.com/realtux/exa",
     "main": "lib/index.js",
+    "types": "index.d.ts",
     "repository": {
         "type": "git",
         "url": "git://github.com/realtux/exa.git"
@@ -19,6 +20,7 @@
     },
     "exports": {
         ".": "./lib/index.js",
+        "./database/models": "./lib/database/models.js",
         "./database/connection": "./lib/database/connection.js",
         "./system": "./lib/system/index.js",
         "./system/sequelize": "./lib/system/sequelize.js"
@@ -36,7 +38,8 @@
         "pg": "8.12.0",
         "pg-hstore": "2.3.4",
         "sequelize": "6.37.3",
-        "sqlite3": "5.1.7"
+        "sqlite3": "5.1.7",
+        "ws": "8.18.0"
     },
     "devDependencies": {
         "nodemon": "3.1.3"

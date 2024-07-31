@@ -8,7 +8,7 @@ cd $(dirname "$0")
 
 case $* in
     console* )
-        docker compose run --rm console node app console ${@:2}
+        docker compose run --rm console node app.js console ${@:2}
         ;;
     jmig* )
         docker compose exec app npx jmig ${@:2}

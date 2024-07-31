@@ -17,6 +17,10 @@ export default {
         host: '0.0.0.0',
         // port to run on
         port: 8118,
+        // http server base url
+        base_url: 'http://127.0.0.1:8118',
+        // whether or not to listen/handle websocket connections
+        websocket: true,
     },
 
     /**

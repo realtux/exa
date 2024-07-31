@@ -17,6 +17,8 @@ npx @exajs/core init
 # start dev with auto reload
 npm run watch
 
+# --or--
+
 # start production
 npm start
 ```
@@ -32,7 +34,7 @@ initializing will create the exa.js template project structure in the current di
 *contains console scripts that can be invoked with `npm run console <script name>`. see docs for proper format.*
 
 - **http**  
-*contains api logic organized in one or more files. each file contains route definitions, middleware, and handlers. see docs for proper format*
+*contains api logic organized in one or more files. each file contains route definitions, middleware, and handlers. see docs for proper format.*
 
 - **library**  
 *contains user defined library files. this is generally relevant js files for your project that don't fit anywhere else.*
@@ -55,6 +57,9 @@ initializing will create the exa.js template project structure in the current di
 - **views**  
 *contains view templates for traditional non-async frontends. use `res.render(path, variables)` instead of `res.send()` in your api logic.*
 
+- **websocket**  
+*contains files that represent websocket connection entrypoints. see docs for proper format.*
+
 ---
 
 ### modularity options
@@ -66,6 +71,7 @@ the following features can be disabled if desired:
 - models (database)
 - public
 - views
+- websocket
 
 ---
 

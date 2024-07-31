@@ -19,7 +19,7 @@ services:
         init: true
         volumes:
             - .:/opt/src
-        working_dir: /opt/src/console
+        working_dir: /opt/src
         env_file:
             - .env
         profiles:
