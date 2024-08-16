@@ -7,6 +7,18 @@
 cd $(dirname "$0")
 
 case $* in
+    dev* )
+        docker compose up
+        ;;
+    start* )
+        docker compose up -d
+        ;;
+    stop* )
+        docker compose down
+        ;;
+    shell* )
+        docker compose exec app bash
+        ;;
     console* )
         docker compose run --rm console node app.js console ${@:2}
         ;;
