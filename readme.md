@@ -77,6 +77,11 @@ the following features can be disabled if desired:
 
 ---
 
+### configuration in development vs production with/without docker
+exa.js is intended to be used with or without docker in both development and production. in either case it's useful to rely on configuration via `.env` for variables that differ between environments as a `.env` file can easily be made available to docker containers. configuration via `config/master.js` is useful for variables related to exa.js itself as well as variables that don't change between environments.
+
+---
+
 ### environment
 - **.env**  
 a `.env` file in the root, if present, is evaluated and added to the environment of the running script at the time it is ran. any values placed in here are made available with `process.env.*` within your code. this is also very helpful if running your project within docker.
