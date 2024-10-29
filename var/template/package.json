@@ -8,8 +8,8 @@
         "nodemon": "2.0.4"
     },
     "scripts": {
-        "watch": "nodemon -q --watch ../.. --ignore node_modules/ -e '*' -x 'node app.js || touch app.js'",
-        "start": "node app.js",
-        "console": "node app.js console $*"
+        "watch": "nodemon -q --watch ../.. --ignore node_modules/ -e '*' -x '%%RUNTIME%% app.js || touch app.js'",
+        "start": "%%RUNTIME%% app.js",
+        "console": "%%RUNTIME%% app.js console $*"
     }
 }

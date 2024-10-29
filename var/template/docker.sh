@@ -20,12 +20,12 @@ case $* in
         docker compose exec app bash
         ;;
     console* )
-        docker compose run --rm console node app.js console ${@:2}
+        docker compose run --rm console %%RUNTIME%% app.js console ${@:2}
         ;;
     jmig* )
-        docker compose exec app npx jmig ${@:2}
+        docker compose exec app %%PACKAGE_X%% jmig ${@:2}
         ;;
-    npm* )
-        docker run -it --rm -v .:/opt/src -w /opt/src node:20 npm ${@:2}
+    %%PACKAGE_M%%* )
+        docker run -it --rm -v .:/opt/src -w /opt/src %%IMAGE%% %%PACKAGE_M%% ${@:2}
         ;;
 esac

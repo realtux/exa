@@ -1,19 +1,19 @@
 services:
     app:
         container_name: exa_app
-        image: node:20
+        image: %%IMAGE%%
         tty: true
         ports:
             - "8118:8118"
         volumes:
             - .:/opt/src
         working_dir: /opt/src
-        command: bash -c 'npm i; npx --yes jmig migrate; npm start'
+        command: %%COMMAND%%
         env_file:
             - .env
     console:
         container_name: exa_console
-        image: node:20
+        image: %%IMAGE%%
         tty: true
         init: true
         volumes:

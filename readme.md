@@ -14,15 +14,18 @@ as if the javascript ecosystem needs another framework... i get it, but please k
 mkdir myproject; cd myproject
 
 # initialize
-npx @exajs/core init
+npx @exajs/core init # with npm
+bunx @exajs/core init # with bun
 
 # start dev with auto reload
-npm run watch
+npm run watch # node.js
+bun run watch # bun
 
 # --or--
 
 # start production
-npm start
+npm start # node.js
+bun run start # bun
 ```
 initializing will create the exa.js template project structure in the current directory. a brief description of this template is below.
 
