@@ -34,22 +34,19 @@ jobs:
       working-directory: docs
       run: npm install
 
+    - name: Configure Git for Deployment
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}
+
     - name: Build Documentation
       working-directory: docs
       run: npm run build
 
     - name: Deploy to GitHub Pages
-      run: |
-        cd docs/build
-
-        git init
-
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-        git add .
-        git commit -m "Deploy documentation"
-
-        git branch -M gh-pages
-        git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git push -f origin gh-pages
+      working-directory: docs
+      env:
+        GIT_USER: github-actions[bot]
+        GIT_TOKEN: ${{ secrets.GH_PAT }}
+      run: npm run deploy
