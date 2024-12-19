@@ -77,7 +77,12 @@ export default async () => {
         }
     }
 
-    await fs.copyFile(`${project_path}/.env.sample`, `${project_path}/.env`)
+    // copy env and swap to development
+    let env_file = (await fs.readFile(`${project_path}/.env.sample`)).toString();
+
+    env_file = env_file.replace('production', 'development');
+
+    await fs.writeFile(`${project_path}/.env`, env_file);
 
     /**
      * process package.json variable changes
@@ -105,20 +110,23 @@ export default async () => {
     let docker_sh = (await fs.readFile(`${project_path}/docker.sh`)).toString();
 
     let docker_image;
-    let docker_command;
+    let docker_command_dev;
+    let docker_command_prod;
     let package_m;
     let package_x;
 
     switch (runtime) {
         case 'node':
             docker_image = 'node:20';
-            docker_command = `npm i; npx --yes jmig migrate; npm start`;
+            docker_command_dev = `npm i; npm run watch`;
+            docker_command_prod = `npm i; npx --yes jmig migrate; npm start`;
             package_m = 'npm';
             package_x = 'npx';
             break;
         case 'bun':
             docker_image = 'oven/bun:latest';
-            docker_command = `bun i; bunx jmig migrate; bun run start`;
+            docker_command_dev = `bun i; bun run watch`;
+            docker_command_prod = `bun i; bunx jmig migrate; bun run start`;
             package_m = 'bun';
             package_x = 'bunx';
             break;
@@ -126,12 +134,14 @@ export default async () => {
 
     docker_compose = docker_compose
         .replaceAll('%%IMAGE%%', docker_image)
-        .replaceAll('%%COMMAND%%', docker_command);
+        .replaceAll('%%COMMAND_DEV%%', docker_command_dev)
+        .replaceAll('%%COMMAND_PROD%%', docker_command_prod);
 
     docker_sh = docker_sh
         .replaceAll('%%RUNTIME%%', runtime)
         .replaceAll('%%IMAGE%%', docker_image)
-        .replaceAll('%%COMMAND%%', docker_command)
+        .replaceAll('%%COMMAND_DEV%%', docker_command_dev)
+        .replaceAll('%%COMMAND_PROD%%', docker_command_prod)
         .replaceAll('%%PACKAGE_M%%', package_m)
         .replaceAll('%%PACKAGE_X%%', package_x);
 

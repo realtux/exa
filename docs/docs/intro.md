@@ -2,46 +2,12 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# welcome
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## what is exa.js?
 
-## Getting Started
+exa.js is a minimal node.js backend framework that has a strong focus on simplicity, modularity, and convention over configuration. it makes available the most important stuff needed for a node.js web framework, and nothing more.
 
-Get started by **creating a new site**.
+## motivation
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+as if the javascript ecosystem needs another framework... i get it, but please know that this project is the culmination of ~10 years of professional development trying to understand what i/people really need in a framework. this project is the consolidated and cleaned up version of about 30 projects worth of boilerplate patchwork that has been unevenly iterated on and used in some form during this time. i'm certain you'll find use for it, and i certainly will.

@@ -10,7 +10,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'My Site',
+    title: 'exa.js',
     tagline: 'Dinosaurs are cool',
     favicon: 'img/favicon.ico',
 
@@ -44,6 +44,7 @@ const config = {
                 docs: {
                     routeBasePath: '/',
                     sidebarPath: './sidebars.js',
+                    sidebarCollapsible: false,
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
@@ -91,7 +92,7 @@ const config = {
                         type: 'docSidebar',
                         sidebarId: 'tutorialSidebar',
                         position: 'left',
-                        label: 'Docs',
+                        label: 'docs',
                     },
                     {
                         href: 'https://github.com/realtux/exa',
@@ -102,44 +103,44 @@ const config = {
             },
             footer: {
                 style: 'dark',
-                links: [
-                    {
-                        title: 'Docs',
-                        items: [
-                            {
-                                label: 'Tutorial',
-                                to: '/intro',
-                            },
-                        ],
-                    },
-                    {
-                        title: 'Community',
-                        items: [
-                            {
-                                label: 'Stack Overflow',
-                                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-                            },
-                            {
-                                label: 'Discord',
-                                href: 'https://discordapp.com/invite/docusaurus',
-                            },
-                            {
-                                label: 'X',
-                                href: 'https://x.com/docusaurus',
-                            },
-                        ],
-                    },
-                    {
-                        title: 'More',
-                        items: [
-                            {
-                                label: 'GitHub',
-                                href: 'https://github.com/facebook/docusaurus',
-                            },
-                        ],
-                    },
-                ],
-                copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+                // links: [
+                //     {
+                //         title: 'Docs',
+                //         items: [
+                //             {
+                //                 label: 'Tutorial',
+                //                 to: '/intro',
+                //             },
+                //         ],
+                //     },
+                //     {
+                //         title: 'Community',
+                //         items: [
+                //             {
+                //                 label: 'Stack Overflow',
+                //                 href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                //             },
+                //             {
+                //                 label: 'Discord',
+                //                 href: 'https://discordapp.com/invite/docusaurus',
+                //             },
+                //             {
+                //                 label: 'X',
+                //                 href: 'https://x.com/docusaurus',
+                //             },
+                //         ],
+                //     },
+                //     {
+                //         title: 'More',
+                //         items: [
+                //             {
+                //                 label: 'GitHub',
+                //                 href: 'https://github.com/facebook/docusaurus',
+                //             },
+                //         ],
+                //     },
+                // ],
+                copyright: `exa.js -- built with docusaurus`,
             },
             prism: {
                 theme: prismThemes.github,

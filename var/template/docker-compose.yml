@@ -8,7 +8,13 @@ services:
         volumes:
             - .:/opt/src
         working_dir: /opt/src
-        command: %%COMMAND%%
+        command: >
+            bash -c '
+            if [ "$EXAENV" = "development" ]; then
+                %%COMMAND_DEV%%
+            else
+                %%COMMAND_PROD%%
+            fi'
         env_file:
             - .env
     console:
