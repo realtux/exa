@@ -8,7 +8,7 @@ exa.js is intended to be used with or without docker in both development and pro
 
 ## compose file
 
-```txt title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 services:
     app:
         container_name: exa_app

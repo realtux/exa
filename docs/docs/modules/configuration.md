@@ -19,33 +19,18 @@ export default {
         development: process.env.EXAENV === 'development',
     },
 
-    /**
-     * http module configuration
-     *   - starts express web server
-     *   - creates http routes from http/*
-     */
     http: {
-        // whether or not to start an express http server
         use: true,
-        // host to run on, 0.0.0.0 for all hosts
+
         host: '0.0.0.0',
-        // port to run on
         port: 8118,
-        // http server base url
         base_url: 'http://127.0.0.1:8118',
-        // whether or not to listen/handle websocket connections
         websocket: true,
     },
 
-    /**
-     * database module configuration
-     *   - uses sequelize.js
-     *   - creates database connection
-     */
     database: {
-        // whether or not to initialize db models in models/*
         use: true,
-        // sequelize dialect to use, supports: mysql | postgres
+
         dialect: 'mysql',
         username: process.env.DATABASE_USERNAME,
         password: process.env.DATABASE_PASSWORD,
@@ -54,35 +39,21 @@ export default {
         port: process.env.DATABASE_PORT,
     },
 
-    /**
-     * console module configuration
-     *   - allows console commands ran from console/*
-     */
     console: {
-        // whether or not to allow console commands
         use: true,
-        // whether or not to show startup information
+
         quiet: false,
     },
 
-    /**
-     * views module configuration
-     */
     views: {
-        // whether or not to enable views
         use: true,
-        // which view engine to use, supports: nunjucks
+
         engine: 'nunjucks',
     },
 
-    /**
-     * public static asset configuration
-     *   - uses express.static(path)
-     */
     public: {
-        // whether or not to serve static assets
         use: true,
-        // base url to serve static assets on
+
         base_url: '/public',
     },
 
@@ -106,9 +77,62 @@ don't put secrets in `config/master.js`, use `.env` instead and reference with `
 
 ### http
 
-this section is used to configure settings for the HTTP and WebSockets module. because the HTTP server is created using Express.js, some settings here may reflect this.
+this section is used to configure settings for the http and websockets module. because the http server is created using express.js, some settings here may reflect this.
 
-- `use` [`bool`] - whether or not to start an http server. 
+- `use` [`bool`] - whether or not to start an http server
+- `host` [`string`] - host to listen on
+  * use `0.0.0.0` to listen to all hosts
+- `port` [`number`] - post to listen on
+- `base_url` [`string`] - base url for the http server
+- `websocket` [`bool`] - whether or not to enable the websocket module
+  * setting this to `false` will cause files in `websocket/*` to be ignored
+
+### database
+
+this section is used to configure settings for the database module. the built-in database support is through the very great [sequelize.js](https://sequelize.org/) project. there's absolutely nothing stopping developers from using something else though.
+
+- `use` [`bool`] - whether or not to process models in `models/*`
+- `dialect` [`dialect`] - this is passed directly to sequelize.js
+  * sequelize.js supports many dialects, please [click here](https://sequelize.org/docs/v6/getting-started/) for more information
+- `username` [`string`] - database username
+- `password` [`string`] - database password
+- `name` [`string`] - database name
+- `host` [`string`] - database host
+- `port` [`number`] - databse port
+
+:::tip[Tip]
+use `process.env.*` for these values. besides not putting secrets in your config, you'll also need these values for the migrations module.
+:::
+
+### console
+
+this section is used to configure console script runner settings.
+
+- `use` [`bool`] - whether or not to register console scripts in `console/*`
+  * setting this to `false` will disallow console scripts from being ran
+- `quiet` [`bool`] - whether or not to suppress exa.js related output
+  * exa.js usually has script start-up information, such as version, time, and other information. setting this to `false` will suppress all this so console command output is only from the developer.
+
+### views
+
+this section is used to configure settings for views and templates.
+
+- `use` [`bool`] - whether or not to enable views
+- `engine` [`string`] - which templating engine to use
+  * currently supported engines are
+    - nunjucks
+
+### public
+
+this secion is used to configure static asset serving. internally this uses express.js.
+
+- `use` [`bool`] - whether or not to serve static assets
+- `base_url` [`string`] - base url that static assets should be available on
+  * this value is passed to `express.static(path)` internally
+
+### user defined configuration
+
+additional configuration can be included at the bottom of the configuration object. any additional configuration placed there will be available at `exa.config.*`.
 
 ---
 
@@ -120,7 +144,7 @@ although optional, it's highly recommend to use a `.env` file for all dynamic va
 
 `exa.js` will automatically parse any `.env` file and make it available via `process.env` at runtime.
 
-```env title=".env"
+```bash title=".env"
 EXAENV=production
 
 # optionally add values here and overwrite values in config/master.js
@@ -129,4 +153,6 @@ DATABASE_PORT=3306
 DATABASE_USERNAME=username
 DATABASE_PASSWORD=password
 DATABASE_NAME=yourdb
+
+COMPOSE_PROJECT_NAME=exajs
 ```

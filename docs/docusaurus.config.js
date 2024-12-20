@@ -79,6 +79,14 @@ const config = {
                 defaultMode: 'dark',
                 respectPrefersColorScheme: false,
             },
+            prism: {
+                theme: prismThemes.github,
+                darkTheme: prismThemes.dracula,
+                additionalLanguages: [
+                    'bash',
+                    'yaml'
+                ],
+            },
             // Replace with your project's social card
             image: 'img/docusaurus-social-card.jpg',
             navbar: {
@@ -141,10 +149,6 @@ const config = {
                 //     },
                 // ],
                 copyright: `exa.js -- built with docusaurus`,
-            },
-            prism: {
-                theme: prismThemes.github,
-                darkTheme: prismThemes.dracula,
             },
         }),
 };
