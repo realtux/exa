@@ -42,8 +42,8 @@ export default async () => {
 
     if (project_path) {
         project_path = './' + project_path
-            .replace(/^[\/\.]+/, '')
-            .replace(/\/+$/, '');
+            .replace(/^[\/\.\\]+/, '')
+            .replace(/(\/|\\)+$/, '');
     } else {
         project_path = '.';
     }
@@ -58,7 +58,7 @@ export default async () => {
     for (const file of files) {
         const stat = await fs.stat(file);
         const is_dir = stat.isDirectory();
-        const filename = file.split('/').slice(-1)[0];
+        const filename = file.split(path.sep).slice(-1)[0];
 
         if (ignore.includes(filename)) {
             continue;
