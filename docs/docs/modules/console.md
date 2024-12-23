@@ -23,5 +23,30 @@ export default new class {
     }
 
 };
+```
 
+## running a console command
+
+all the following examples assume a script called `sample` is located at `console/sample.js`.
+
+### from root directory
+
+```bash
+npm run sample
+```
+
+### via a cronjob
+
+```bash
+npm --prefix /path/to/app run sample
+```
+
+### while using docker
+
+```bash
+# from root directory
+./docker.sh console sample
+
+# via cronjob
+/path/to/app/docker.sh console sample
 ```

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # websockets
@@ -8,13 +8,13 @@ this module is used for exposing urls that upgrade to websocket connections.
 
 ## concept
 
-zero or more files are created in the `websocket` directory. each file is intended to be used for a single url that upgrades to websocket. the file can be named anything and has no effect on functionality. all files in the `websocket` folder will be loaded and processed when `exa.js` starts.
+zero or more files are created in the `websocket` directory. each file is intended to be used for a single url that upgrades to websocket. the file can be named anything and has no effect on functionality. all files in the `websocket` directory will be loaded and processed when `exa.js` starts.
 
 ## internal handling
 
 the websocket server implementation is handled using the well known and trusted `ws` module. this module largely just wraps `wss.on('connection', callback)`. connections are upgraded from regular http requests rather than running entirely separate servers on separate ports. this makes enabling websockets very easy.
 
-## file structure
+## anatomy of a websocket handler
 
 a websocket handler looks like this:
 

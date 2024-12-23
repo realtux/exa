@@ -8,6 +8,8 @@ exa.js is intended to be used with or without docker in both development and pro
 
 ## compose file
 
+the only item in the docker compose file that may need to be changed is the port number. by default it uses the same port that is configured in `config/master.js` for the app.
+
 ```yaml title="docker-compose.yml"
 services:
     app:
@@ -41,3 +43,20 @@ services:
         profiles:
             - nostart
 ```
+
+## helper script
+
+for your convenience, a docker helper script is located in the root directory to help interact with an exa.js project running in docker more easily. the helper script has the following functions:
+
+- `./docker.sh dev` - starts app in foreground
+- `./docker.sh start` - starts app in background
+- `./docker.sh stop` - stops app
+- `./docker.sh shell` - opens shell to the container running the app
+- `./docker.sh console <name>` - runs a console command by name
+- `./docker.sh jmig <command>` - runs jmig in the app container
+  * requires the app to be running
+- `./docker.sh npm <args>` - runs npm in the root directory of the app
+
+:::tip[Tip]
+if your project was initialized to use `bun`, swap `npm` for `bun` anywhere it appears
+:::
