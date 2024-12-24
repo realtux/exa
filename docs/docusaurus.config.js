@@ -48,7 +48,7 @@ const config = {
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                        'https://github.com/realtux/exa/tree/master/docs',
                 },
                 blog: {
                     showReadingTime: true,
@@ -59,7 +59,7 @@ const config = {
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                        'https://github.com/realtux/exa/tree/master/docs',
                     // Useful options to enforce blogging best practices
                     onInlineTags: 'warn',
                     onInlineAuthors: 'warn',
@@ -92,7 +92,7 @@ const config = {
             navbar: {
                 title: 'exa.js',
                 logo: {
-                    alt: 'My Site Logo',
+                    alt: 'exa.js',
                     src: 'img/logo.svg',
                 },
                 items: [
@@ -104,7 +104,7 @@ const config = {
                     },
                     {
                         href: 'https://github.com/realtux/exa',
-                        label: 'GitHub',
+                        label: 'github',
                         position: 'right',
                     },
                 ],
