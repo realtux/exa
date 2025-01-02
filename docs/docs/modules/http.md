@@ -114,3 +114,58 @@ middleware = {
 ```
 
 middleware precedence is top to bottom. this is why everything works in the third example. `hello` has a value of blank array.
+
+## request parsers
+
+### application/json
+
+`req.body` is populated with the parsed version of the request.
+
+```json
+{"name": "exa", "type": "framework"}
+```
+
+is parsed into
+
+```js
+{
+    name: 'exa',
+    type: 'framework'
+}
+```
+
+### application/x-www-form-urlencoded
+
+`req.body` is populated with an object of key/value pairs representing the request.
+
+```
+?name=exa&type=framework
+```
+
+is parsed into
+
+```js
+{
+    name: 'exa',
+    type: 'framework'
+}
+```
+
+### multipart/form-data
+
+same as above, `req.body` is populated with an object of key/value pairs representing the request **for only non-files**. `exa.js` uses [multer](https://www.npmjs.com/package/multer) middleware for `multipart/form-data` requests. by default, the in memory temporary storage is used.
+
+for `multipart/form-data` requests, `req.files` is populated with an array of objects each representing an uploaded file. for example, a file uploaded with the name `cat` would cause `req.files` to look like this:
+
+```js
+[
+    {
+        fieldname: 'cat',
+        originalname: 'cool_cat.jpg',
+        encoding: '7bit',
+        mimetype: 'image/jpeg',
+        buffer: <Buffer ff d8 ff e1 7f ... 1024 more bytes>,
+        size: 7972467
+    }
+]
+```
