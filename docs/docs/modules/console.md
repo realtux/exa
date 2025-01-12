@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 6
 ---
 
 # console
@@ -29,15 +29,13 @@ export default new class {
 
 all the following examples assume a script called `sample` is located at `console/sample.js`.
 
-### from root directory
+### bare metal
 
 ```bash
+# from root directory
 npm run sample
-```
 
-### via a cronjob
-
-```bash
+# via cronjob
 npm --prefix /path/to/app run sample
 ```
 

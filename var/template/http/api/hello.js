@@ -1,4 +1,4 @@
-import sample from '#app/models/sample.js';
+import { models } from '@exajs/core/database';
 
 export default new class {
 
@@ -7,7 +7,7 @@ export default new class {
     }
 
     async world(req, res) {
-        sample.model_method();
+        models.sample.model_method();
 
         return res
             .status(200)
