@@ -26,7 +26,8 @@ declare module '@exajs/core/system/sequelize' {
 }
 
 declare module '@exajs/core/util' {
+    import hash from '#exa/util/hash.js';
     import json from '#exa/util/json.js';
     import string from '#exa/util/string.js';
-    export { json, string };
+    export { hash, json, string };
 }
