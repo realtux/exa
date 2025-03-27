@@ -89,6 +89,9 @@ export default async () => {
      */
     let package_json = JSON.parse(await fs.readFile(`${project_path}/package.json`));
 
+    // delete internal
+    delete package_json.scripts.__internal_test;
+
     // ensure user gets latest version
     package_json.dependencies['@exajs/core'] = 'latest';
 

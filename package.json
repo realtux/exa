@@ -2,7 +2,7 @@
     "name": "@exajs/core",
     "type": "module",
     "author": "Brian Seymour <@realtux>",
-    "version": "0.0.21",
+    "version": "0.0.22",
     "description": "modern opinionated node.js framework",
     "license": "MIT",
     "homepage": "https://github.com/realtux/exa",
@@ -21,10 +21,8 @@
     "exports": {
         ".": "./lib/index.js",
         "./database": "./lib/database/index.js",
-        "./database/models": "./lib/database/models.js",
-        "./database/connection": "./lib/database/connection.js",
-        "./system/sequelize": "./lib/system/sequelize.js",
-        "./util": "./lib/util/index.js"
+        "./util": "./lib/util/index.js",
+        "./system/sequelize": "./lib/system/sequelize.js"
     },
     "dependencies": {
         "chalk": "5.3.0",
