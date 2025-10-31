@@ -9,6 +9,12 @@ declare module '@exajs/core/database' {
     export { connection, models };
 }
 
+declare module '@exajs/core/system/express' {
+    const express: any;
+    export default express;
+    export * from 'express';
+}
+
 declare module '@exajs/core/system/sequelize' {
     const sequelize: any;
     export default sequelize;
