@@ -10,8 +10,13 @@ export default new class {
 
     }
 
-    // runs before a console command terminates
-    async before_shutdown() {
+    // runs before a console command starts
+    async before_console_run() {
+
+    }
+
+    // runs after a console command terminates
+    async after_console_run() {
 
     }
 
