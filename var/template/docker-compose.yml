@@ -1,7 +1,7 @@
 services:
     app:
         container_name: exa_app
-        image: %%IMAGE%%
+        image: node:24
         tty: true
         ports:
             - "8118:8118"
@@ -11,15 +11,15 @@ services:
         command: >
             bash -c '
             if [ "$EXAENV" = "development" ]; then
-                %%COMMAND_DEV%%
+                npm i; npm run watch
             else
-                %%COMMAND_PROD%%
+                npm i; npx --yes jmig migrate; npm start
             fi'
         env_file:
             - .env
     console:
         container_name: exa_console
-        image: %%IMAGE%%
+        image: node:24
         tty: true
         init: true
         volumes:

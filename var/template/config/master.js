@@ -9,8 +9,6 @@ export default {
     },
 
     http: {
-        use: true,
-
         host: '0.0.0.0',
         port: 8118,
         base_url: 'http://127.0.0.1:8118',
@@ -18,16 +16,30 @@ export default {
             origins: '*',
             methods: '*',
             headers: '*',
-        }
-    },
-
-    websocket: {
-        use: true,
+        },
+        json: {
+            max_size: '256kb',
+            strict: true,
+        },
+        urlencoded: {
+            max_size: '256kb',
+            extended: true,
+            parameter_limit: 1000,
+        },
+        text: {
+            max_size: '256kb',
+        },
+        raw: {
+            max_size: '256kb',
+        },
+        uploads: {
+            adapter: 'memory',
+            max_size: 64 * 1024 * 1024,
+            max_files: 10,
+        },
     },
 
     database: {
-        use: true,
-
         dialect: 'mysql',
         username: process.env.DATABASE_USERNAME,
         password: process.env.DATABASE_PASSWORD,
@@ -38,26 +50,40 @@ export default {
     },
 
     console: {
-        use: true,
-
         quiet: false,
     },
 
     views: {
         use: true,
-
         engine: 'nunjucks',
     },
 
     public: {
         use: true,
-
         base_url: '/public',
+        cache: 365 * 24 * 60 * 60 * 1000,
     },
+
+    session: {
+        use: false,
+        adapter: 'memory',
+        name: 'exa.sess',
+        secret: 'changethistosomethingelseplz',
+        cookie: {
+            max_age: 10 * 24 * 60 * 60 * 1000,
+            path: '/',
+            domain: null,
+            http_only: true,
+            secure: false,
+            same_site: 'lax',
+            partitioned: false,
+            priority: null,
+        },
+    }
 
     /**
      * user defined custom configuration
-     * add anything you'd like to be avaiable at exa.config.*
+     * add anything you'd like to be available at exa.config.*
      */
 
 };

@@ -13,8 +13,7 @@ as if the javascript ecosystem needs another framework... i get it, but please k
 
 ## requirements
 
-- node.js v10+
-- optional: bun
+- node.js 24 or newer
 - optional: docker
 
 ## get going in the next two minutes

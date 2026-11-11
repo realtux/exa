@@ -1,14 +1,14 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
         "paths": {
             "#exa/*": [
-                "lib/*"
+                "./lib/*"
             ],
             "#app/*": [
-                "var/seed_root/*"
+                "./var/template/*"
             ]
         },
+        "module": "nodenext",
         "moduleResolution": "nodenext"
     }
 }

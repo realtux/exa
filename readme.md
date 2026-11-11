@@ -1,7 +1,7 @@
-## IMPORTANT!!! THIS PROJECT IS AN EARLY ACCESS PREVIEW THAT IS BEING ACTIVELY DEVELOPED. IT MAY OR MAY NOT BE SUITABLE FOR PRODUCTION. EXPECTED 1.0 DATE IS APRIL 2026. THE PROJECT STATE IS: VERY USEFUL AND BEING REFINED
+## IMPORTANT!!! THIS PROJECT IS AN EARLY ACCESS PREVIEW THAT IS BEING ACTIVELY DEVELOPED. IT MAY OR MAY NOT BE SUITABLE FOR PRODUCTION. EXPECTED 1.0 DATE IS NOT YET KNOWN. THE PROJECT STATE IS: VERY USEFUL AND BEING REFINED
 
 ## exa.js by [tux](https://github.com/realtux)
-exa.js is a minimal node.js backend framework that has a strong focus on simplicity, modularity, and convention over configuration. it makes available the most important stuff needed for a node.js web framework, and nothing more.
+exa.js is a minimal api first node.js backend framework that has a strong focus on simplicity, modularity, and convention over configuration. it makes available the most important stuff needed for a node.js web framework, and nothing more.
 
 ## get going in the next two minutes
 ```bash

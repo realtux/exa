@@ -12,7 +12,7 @@ zero or more files are created in the `websocket` directory. each file is intend
 
 ## internal handling
 
-the websocket server implementation is handled using the well known and trusted `ws` module. this module largely just wraps `wss.on('connection', callback)`. connections are upgraded from regular http requests rather than running entirely separate servers on separate ports. this makes enabling websockets very easy.
+the websocket server implementation is handled using the well known and trusted `ws` module. connections are upgraded from regular http requests rather than running entirely separate servers on separate ports. a request is upgraded only when its path matches a handler. a handler whose `route` is `/` is the fallback for paths that do not have their own file. anything else is rejected before the handshake.
 
 ## anatomy of a websocket handler
 

@@ -25,6 +25,26 @@ export default new class {
 };
 ```
 
+## staying alive
+
+`console.exit` in `config/master.js` applies to every command. the default is `true`, so the process exits when `run()` finishes even if a database or redis connection is still open.
+
+a single command can override that by setting `exit` on itself:
+
+```js title="console/worker.js"
+export default new class {
+
+    exit = false
+
+    async run() {
+        // this command keeps running after run() returns
+    }
+
+};
+```
+
+leave `exit` unset to use the config value. a missing command still exits with code `1`.
+
 ## running a console command
 
 all the following examples assume a script called `sample` is located at `console/sample.js`.
@@ -33,10 +53,10 @@ all the following examples assume a script called `sample` is located at `consol
 
 ```bash
 # from root directory
-npm run sample
+npm run console -- sample
 
 # via cronjob
-npm --prefix /path/to/app run sample
+npm --prefix /path/to/app run console -- sample
 ```
 
 ### while using docker

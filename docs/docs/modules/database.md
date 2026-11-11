@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # database
 
-the database module facilitates connecting exa.js to an external database. this module is a thin wrapper around the great and powerful [sequelize.js](https://sequelize.org/) project. the main purpose is to expose and configure models in a slightly more intutitive way.
+the database module facilitates connecting exa.js to an external database. this module is a thin wrapper around the great and powerful [sequelize.js](https://sequelize.org/) project. the main purpose is to expose and configure models in a slightly more intutitive way. a model is registered under its filename, so `models/user2.js` is available as `models.user2`.
 
 ## anatomy of a model
 
@@ -27,7 +27,7 @@ class users extends Model {
         org_id: DataTypes.INTEGER,
         name: DataTypes.STRING,
         email: DataTypes.STRING,
-        content: DataTypes.DESCRIPTION,
+        content: DataTypes.TEXT,
         created_at: DataTypes.DATE,
     }
 
@@ -42,7 +42,8 @@ class users extends Model {
 
     static hooks = {
         async beforeCreate(instance) {
-            instance.created_at = util.now();
+            // a luxon datetime is stored as midnight
+            instance.created_at = util.now().toJSDate();
         }
     }
 

@@ -14,7 +14,7 @@ the only item in the docker compose file that may need to be changed is the port
 services:
     app:
         container_name: exa_app
-        image: node:20
+        image: node:24
         tty: true
         ports:
             - "8118:8118"
@@ -23,16 +23,16 @@ services:
         working_dir: /opt/src
         command: >
             bash -c '
-            if [ "$EXAENV" = "development" ]; then 
+            if [ "$EXAENV" = "development" ]; then
                 npm i; npm run watch
-            else 
+            else
                 npm i; npx --yes jmig migrate; npm start
             fi'
         env_file:
             - .env
     console:
         container_name: exa_console
-        image: node:20
+        image: node:24
         tty: true
         init: true
         volumes:
@@ -56,7 +56,3 @@ for your convenience, a docker helper script is located in the root directory to
 - `./docker.sh jmig <command>` - runs jmig in the app container
   * requires the app to be running
 - `./docker.sh npm <args>` - runs npm in the root directory of the app
-
-:::tip[Tip]
-if your project was initialized to use `bun`, swap `npm` for `bun` anywhere it appears
-:::

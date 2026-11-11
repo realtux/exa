@@ -2,12 +2,12 @@
     "name": "@exajs/core",
     "type": "module",
     "author": "Brian Seymour <@realtux>",
-    "version": "0.0.31",
+    "version": "0.0.32",
     "description": "modern opinionated node.js framework",
     "license": "MIT",
     "homepage": "https://github.com/realtux/exa",
     "main": "lib/index.js",
-    "types": "index.d.ts",
+    "types": "lib/index.d.ts",
     "repository": {
         "type": "git",
         "url": "git://github.com/realtux/exa.git"
@@ -19,21 +19,39 @@
         "#exa/*.js": "./lib/*.js"
     },
     "exports": {
-        ".": "./lib/index.js",
-        "./database": "./lib/database/index.js",
-        "./util": "./lib/util/index.js",
-        "./system/express": "./lib/system/express.js",
-        "./system/sequelize": "./lib/system/sequelize.js"
+        ".": {
+            "types": "./lib/index.d.ts",
+            "default": "./lib/index.js"
+        },
+        "./database": {
+            "types": "./lib/database/index.d.ts",
+            "default": "./lib/database/index.js"
+        },
+        "./util": {
+            "types": "./lib/util/index.d.ts",
+            "default": "./lib/util/index.js"
+        },
+        "./system/express": {
+            "types": "./lib/system/express.d.ts",
+            "default": "./lib/system/express.js"
+        },
+        "./system/sequelize": {
+            "types": "./lib/system/sequelize.d.ts",
+            "default": "./lib/system/sequelize.js"
+        }
     },
     "dependencies": {
+        "@types/express": "4.17.25",
+        "@types/express-session": "1.19.0",
         "chalk": "5.3.0",
         "cors": "2.8.5",
         "dotenv": "16.4.5",
         "dotenv-expand": "11.0.6",
         "express": "4.19.2",
-        "glob": "10.4.1",
+        "express-session": "1.19.0",
+        "glob": "14.0.4",
         "luxon": "3.4.4",
-        "multer": "1.4.5-lts.1",
+        "multer": "2.5.0",
         "mysql2": "3.10.1",
         "nunjucks": "3.2.4",
         "pg": "8.12.0",

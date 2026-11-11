@@ -3,36 +3,9 @@ import { glob } from 'glob';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
-import readline from 'node:readline/promises';
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 
 export default async () => {
     console.log('starting initialization...');
-    console.log();
-
-    let runtime;
-
-    // js runtime chooser
-    console.log('which js runtime would you like to use?');
-    console.log('[1] node.js');
-    console.log('[2] bun');
-
-    switch (await rl.question('choice [1]: ')) {
-        case '':
-        case '1':
-            runtime = 'node';
-            break;
-        case '2':
-            runtime = 'bun';
-            break;
-    }
-
-    rl.close();
-
     console.log();
 
     let initiator = fileURLToPath(import.meta.url);
@@ -100,62 +73,15 @@ export default async () => {
 
     package_json = JSON.stringify(package_json, null, 4);
 
-    // replace runtime token
-    package_json = package_json
-        .replaceAll('%%RUNTIME%%', runtime);
-
     await fs.writeFile(`${project_path}/package.json`, package_json);
 
-    /**
-     * process docker related changes
-     */
-    let docker_compose = (await fs.readFile(`${project_path}/docker-compose.yml`)).toString();
-    let docker_sh = (await fs.readFile(`${project_path}/docker.sh`)).toString();
-
-    let docker_image;
-    let docker_command_dev;
-    let docker_command_prod;
-    let package_m;
-    let package_x;
-
-    switch (runtime) {
-        case 'node':
-            docker_image = 'node:20';
-            docker_command_dev = `npm i; npm run watch`;
-            docker_command_prod = `npm i; npx --yes jmig migrate; npm start`;
-            package_m = 'npm';
-            package_x = 'npx';
-            break;
-        case 'bun':
-            docker_image = 'oven/bun:latest';
-            docker_command_dev = `bun i; bun run watch`;
-            docker_command_prod = `bun i; bunx jmig migrate; bun run start`;
-            package_m = 'bun';
-            package_x = 'bunx';
-            break;
-    }
-
-    docker_compose = docker_compose
-        .replaceAll('%%IMAGE%%', docker_image)
-        .replaceAll('%%COMMAND_DEV%%', docker_command_dev)
-        .replaceAll('%%COMMAND_PROD%%', docker_command_prod);
-
-    docker_sh = docker_sh
-        .replaceAll('%%RUNTIME%%', runtime)
-        .replaceAll('%%IMAGE%%', docker_image)
-        .replaceAll('%%COMMAND_DEV%%', docker_command_dev)
-        .replaceAll('%%COMMAND_PROD%%', docker_command_prod)
-        .replaceAll('%%PACKAGE_M%%', package_m)
-        .replaceAll('%%PACKAGE_X%%', package_x);
-
-    await fs.writeFile(`${project_path}/docker-compose.yml`, docker_compose);
-    await fs.writeFile(`${project_path}/docker.sh`, docker_sh);
+    await fs.chmod(`${project_path}/docker.sh`, 0o755);
 
     console.log('running npm install...');
 
     // packages install
     process.chdir(project_path);
-    execSync(`${package_m} i`, { stdio: 'inherit' });
+    execSync('npm i', { stdio: 'inherit' });
 
     console.log('creating a new git repo...');
 
@@ -164,5 +90,5 @@ export default async () => {
 
     // done
     console.log('-------');
-    console.log(`installation complete, run \`${package_m} run watch\` to start your application`);
-}
+    console.log('installation complete, run `npm run watch` to start your application');
+};

@@ -17,7 +17,8 @@ class sample extends Model {
 
     static hooks = {
         async beforeCreate(instance) {
-            instance.created_at = util.now();
+            // a luxon datetime is stored as midnight
+            instance.created_at = util.now().toJSDate();
         }
     }
 

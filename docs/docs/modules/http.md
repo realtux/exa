@@ -117,6 +117,8 @@ middleware precedence is top to bottom. this is why everything works in the thir
 
 ## request parsers
 
+each parser reads its limits from `http`. `json`, `urlencoded`, `text`, and `raw` default to a `max_size` of `256kb`. `http.json.strict` defaults to `true`. `http.urlencoded` defaults to `extended: true` and `parameter_limit: 1000`.
+
 ### application/json
 
 `req.body` is populated with the parsed version of the request.
@@ -153,7 +155,7 @@ is parsed into
 
 ### multipart/form-data
 
-same as above, `req.body` is populated with an object of key/value pairs representing the request **for only non-files**. `exa.js` uses [multer](https://www.npmjs.com/package/multer) middleware for `multipart/form-data` requests. by default, the in memory temporary storage is used.
+same as above, `req.body` is populated with an object of key/value pairs representing the request **for only non-files**. `exa.js` uses [multer](https://www.npmjs.com/package/multer) middleware for `multipart/form-data` requests. files are kept in memory. `http.uploads.max_size` is the largest file that will be accepted, and the default is 64mb. `http.uploads.max_files` is how many files one request can include, and the default is 10. `http.uploads.adapter` is `memory` for now.
 
 for `multipart/form-data` requests, `req.files` is populated with an array of objects each representing an uploaded file. for example, a file uploaded with the name `cat` would cause `req.files` to look like this:
 
@@ -169,3 +171,38 @@ for `multipart/form-data` requests, `req.files` is populated with an array of ob
     }
 ]
 ```
+
+## sessions
+
+when `session.use` is `true` in `config/master.js`, every route handler and middleware receives `req.session`. read a value off it, or set a value to store it for the next request from the same browser. the session id is kept in the cookie named by `session.name`.
+
+```js title="http/account.js"
+export default new class {
+
+    routes = {
+        'post /login': 'login',
+        'get /me': 'me',
+    }
+
+    async login(req, res) {
+        req.session.user_id = 5;
+
+        return res
+            .status(200)
+            .send({ ok: true });
+    }
+
+    async me(req, res) {
+        return res
+            .status(200)
+            .send({
+                user_id: req.session.user_id ?? null,
+            });
+    }
+
+};
+```
+
+a session is saved when the handler changes it. reading `req.session` without setting anything does not create a cookie. `session.adapter` currently supports `memory` only, which stores sessions in the process. the cookie options live under `session.cookie`. `secure` defaults to `false` so the cookie is sent over plain http.
+
+a thrown route or middleware is logged and the client receives json. the process stays up.

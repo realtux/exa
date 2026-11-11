@@ -27,7 +27,7 @@ contains express.js compatible middleware. middleware is configured for use in a
 contains [jmig](https://github.com/realtux/jmig) compatible database migrations files. these are used to apply and rollback changes to a database.
 
 ### models ([/modules/database](/modules/database))
-contains sequelize.js compatible database model files. to use a different database orm, set `database.use = false` in `config/master.js` which will disable automatic initialization of the `models` directory. see docs for proper format.
+contains sequelize.js compatible database model files. these are loaded on startup. see docs for proper format.
 
 ### public
 contains publicly available static files.
