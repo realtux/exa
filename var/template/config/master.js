@@ -46,7 +46,7 @@ export default {
         name: process.env.DATABASE_NAME,
         host: process.env.DATABASE_HOST,
         port: process.env.DATABASE_PORT,
-        timezone: 'UTC',
+        timezone: '+00:00',
     },
 
     console: {
@@ -72,12 +72,8 @@ export default {
         cookie: {
             max_age: 10 * 24 * 60 * 60 * 1000,
             path: '/',
-            domain: null,
             http_only: true,
             secure: false,
-            same_site: 'lax',
-            partitioned: false,
-            priority: null,
         },
     }
 

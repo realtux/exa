@@ -57,7 +57,7 @@ export default {
         name: process.env.DATABASE_NAME,
         host: process.env.DATABASE_HOST,
         port: process.env.DATABASE_PORT,
-        timezone: 'UTC',
+        timezone: '+00:00',
     },
 
     console: {
@@ -155,7 +155,7 @@ this section is used to configure settings for the database module. the built-in
 - `name` (`string`, default: `''`) - database name
 - `host` (`string`, default: `127.0.0.1`) - database connection host
 - `port` (`number`, default: `3306`) - database connection port
-- `timezone` (`string`, default: `UTC`) - timezone to set the database to. sqlite does not receive this value. sequelize rejects any sqlite timezone other than `+00:00`, and sqlite already returns dates as utc
+- `timezone` (`string`, default: `+00:00`) - timezone used when reading and writing dates. mysql2 accepts `local`, `Z`, or an offset such as `+00:00`, and ignores a name such as `UTC`. sqlite does not receive this value. sequelize rejects any sqlite timezone other than `+00:00`, and sqlite already returns dates as utc
 
 :::tip[Tip]
 use `process.env.*` for these values. besides not putting secrets in your config, you'll also need these values for the migrations module.
