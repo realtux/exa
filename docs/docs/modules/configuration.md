@@ -129,7 +129,7 @@ this section is used to configure settings for the http module. because the http
   * `strict` (`bool`, default: `true`) - only accept a json array or object. a bare string or number is rejected
 - `urlencoded` (`object`) - `application/x-www-form-urlencoded`
   * `max_size` (`string`, default: `256kb`) - maximum body size, passed through to express
-  * `extended` (`bool`, default: `true`) - parse rich objects and arrays. `false` uses the simpler querystring parser
+  * `extended` (`bool`, default: `true`) - parse rich objects and arrays. `false` uses the simpler querystring parser. a body nested more than 32 levels is rejected
   * `parameter_limit` (`number`, default: `1000`) - maximum number of fields. express uses `1000` when this is omitted
 - `text` (`object`) - `text/plain`
   * `max_size` (`string`, default: `256kb`) - maximum body size, passed through to express
@@ -221,7 +221,7 @@ environment configuration is great for values that are specific to a machine or 
 
 although optional, it's highly recommend to use a `.env` file for all dynamic variables and also secrets. a sample `.env` file is located at `.env.sample` and a good starting point is to simply copy it `cp .env.sample .env`
 
-`exa.js` will automatically parse any `.env` file and make it available via `process.env` at runtime.
+`exa.js` will automatically parse any `.env` file and make it available via `process.env` at runtime. a value can reference another variable with `${NAME}`. a variable that is already set in the environment is left as it is. a value can run a command with `$(command)`, and the command output replaces that value. a missing `.env` file is ignored.
 
 ```bash title=".env"
 EXAENV=production
